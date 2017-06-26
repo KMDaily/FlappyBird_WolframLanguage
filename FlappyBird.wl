@@ -120,21 +120,17 @@ distToRectangle[#,point]&/@pList
 (*static graphics*)
 
 
-(* ::Input::Initialization:: *)
-SetDirectory[FileNameJoin[{NotebookDirectory[],"Sprites"}]];
-
-
-frame1 = Import["frame1.png"];
-frame2 = Import["frame2.png"];
-frame3 = Import["frame3.png"];
+frame1 = Import["Sprites/frame1.png"];
+frame2 = Import["Sprites/frame2.png"];
+frame3 = Import["Sprites/frame3.png"];
 backgroundColor = RGBColor@@ImageData[frame1][[1,1]];
 gifSequence = RemoveBackground /@ {frame1,frame2,frame3,frame2};
-invertPipeImage = Import["pipe.PNG"];
+invertPipeImage = Import["Sprites/pipe.PNG"];
 pipeImage = ImageReflect[invertPipeImage];
-ground = Import["ground.PNG"];
-city = Import["city.PNG"];
-digits = RemoveBackground /@ First[ImagePartition[ImageCrop[ImageTake[Import["digits.jpg"],{100,250}]],{42.76,60.2}]];
-zero = ImageCrop[Import["zero.png"]];
+ground = Import["Sprites/ground.PNG"];
+city = Import["Sprites/city.PNG"];
+digits = RemoveBackground /@ First[ImagePartition[ImageCrop[ImageTake[Import["Sprites/digits.jpg"],{100,250}]],{42.76,60.2}]];
+zero = ImageCrop[Import["Sprites/zero.png"]];
 digits = Join[digits,{zero}];
 
 
@@ -154,12 +150,9 @@ makeScore[n_Integer]:=Row[digits[[IntegerDigits[n]/.(0->10)]]]
 (*sound effects*)
 
 
-SetDirectory[FileNameJoin[{NotebookDirectory[],"Sounds"}]];
-
-
-flapSound = Import["flapSound.wav", "Sound"];
-hurtSound = Import["hurtSound.wav", "Sound"];
-scoreSound = Import["scoreSound.wav", "Sound"];
+flapSound = Import["Sounds/flapSound.wav", "Sound"];
+hurtSound = Import["Sounds/hurtSound.wav", "Sound"];
+scoreSound = Import["Sounds/scoreSound.wav", "Sound"];
 
 
 SetDirectory[];
